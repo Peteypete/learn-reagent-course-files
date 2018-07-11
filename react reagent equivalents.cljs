@@ -87,6 +87,33 @@ opt+cmd+B
 disassoc
 
 
+
+[:div.btn.btn--primary.float--right.tooltip
+ {:data-tooltip "Add to order"
+ :on-click (fn [] (swap! state/orders update id inc))}
+ [:i.icon.icon--plus]]
+
+
+  [:button.btn.btn--link.tooltip
+    {:data-tooltip "Remove"
+     :on-click (fn [] (swap! state/orders dissoc id))}
+    [:i.icon.icon--cross]]
+
+;;Lecture 10
+
+ [:button.btn.btn--link.tooltip
+  {:data-tooltip "Remove all"
+   :onclick (fn [] (reset! state/orders {}))}
+  [:i.icon.icon--delete]]
+
+ (reduce + (map (fn [[id quant]] (* quant (get-in @state/gigs [id :price]))) @state/orders)))
+
+;;thread last macro
+(->> @state/orders
+     (map (fn [[id quant]] (* quant (get-in @state/gigs [id :price]))))
+     (reduce +))
+
+
 (greet-1 "peter" "wen")
 (greet-2 "peter" "wen")
 (greet-3 "peterrrr" "wen")
