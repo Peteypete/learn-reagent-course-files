@@ -113,6 +113,13 @@ disassoc
      (map (fn [[id quant]] (* quant (get-in @state/gigs [id :price]))))
      (reduce +))
 
+;;Lecture 11
+;;predicate function - function that returns a true or false - anything with a ? at the end
+  (if (empty? @state/orders)
+    [true]
+    [false])
+
+
 
 (greet-1 "peter" "wen")
 (greet-2 "peter" "wen")
