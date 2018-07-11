@@ -1,14 +1,11 @@
 
 ;;Lecture 2
-
 ;;JavaScript
 function app ()
   {
     return(<div id="id" class="class"></div>)
   }
-
 ;;ClojureScript
-
 (defn app
   []
   [:div#id.class])
@@ -18,19 +15,15 @@ function app ()
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
-
-
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
   }
 }
-
 (defn welcome[]
   [:welcome "Hello,"])
 
 ;; Lecture 3
-
 (assoc gigs :one 1)
 
 (def gigs-atom (atom {}))
@@ -90,6 +83,8 @@ opt+cmd+B
      [:p.title (str (get-in @state/gigs [id :title]) " \u00D7 " quant)]]
     [:div.action
      [:div.price (* (get-in @state/gigs [id :price]) quant)]]])
+;;Lecture 9
+disassoc
 
 
 (greet-1 "peter" "wen")
