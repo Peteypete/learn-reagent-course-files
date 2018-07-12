@@ -134,3 +134,15 @@ disassoc
 ; component level state
 
 ;Wrap mark-up do not include component level state in the render function
+;;Lecture 14
+
+dot dot operator
+
+% = event
+
+JavaScript
+event.target.value
+
+(.-value (.-target %))
+(--> % .-target .-value)
+(.. % -target -value)
