@@ -4,6 +4,7 @@
 
 (defn gigs
  []
+  (let [add-to-order #(swap! state/orders update % inc)]
   [:main
     [:div.gigs
     (for [{:keys [id img title price desc]}(vals @state/gigs)]
@@ -12,7 +13,7 @@
                           [:div.gig__body
                            [:div.gig__title
                             [:div.btn.btn--primary.float--right.tooltip {:data-tooltip "Add to order"
-                             :on-click (fn [] (swap! state/orders update id inc))}
+                             :on-click (add-to-order id)}
                              [:i.icon.icon--plus]] title]
                               [:p.gig__price (format-price price)]
                               [:p.gig_desc desc]]])
@@ -25,4 +26,4 @@
                            [:div.btn.btn--primary.float--right.tooltip {:data-tooltip "Add to order"}
                             [:i.icon.icon--plus]] (:title gig)]
                              [:p.gig__price (format-price (:price gig))]
-                             [:p.gig_desc (:desc gig)]]]) (vals @state/gigs))]])
+                             [:p.gig_desc (:desc gig)]]]) (vals @state/gigs))]]))

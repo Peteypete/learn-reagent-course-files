@@ -86,8 +86,6 @@ opt+cmd+B
 ;;Lecture 9
 disassoc
 
-
-
 [:div.btn.btn--primary.float--right.tooltip
  {:data-tooltip "Add to order"
  :on-click (fn [] (swap! state/orders update id inc))}
@@ -119,7 +117,12 @@ disassoc
     [true]
     [false])
 
+;; Lecture 12
 
+
+(defn greet-1 [name last] (str "Hello " name last))
+(def greet-2 (fn [name last] (str "Hello " name last)))
+(def greet-3 #(str "Hello " %1 %2))
 
 (greet-1 "peter" "wen")
 (greet-2 "peter" "wen")
