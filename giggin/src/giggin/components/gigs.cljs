@@ -39,7 +39,7 @@
                      :upsert-gig upsert-gig
                      :toggle-modal toggle-modal
                      :initial-values initial-values}]
-        (for [{:keys [id img title price desc] :as gig} (vals @state/gigs)]
+        (for [{:keys [id img title price desc sold-out] :as gig} (vals @state/gigs)]
           [:div.gig {:key id}
            [:img.gig__artwork.gig__edit {:src img
                                          :alt title
@@ -47,10 +47,12 @@
                                                                    :gig gig})}]
            [:div.gig__body
             [:div.gig__title
-             [:div.btn.btn--primary.float--right.tooltip
-              {:data-tooltip "Add to order"
-                :on-click #(add-to-order id)}
-              [:i.icon.icon--plus]]
-              title]
+             (if sold-out
+               [:div.sold-out.float--right "Soldout"]
+               [:div.btn.btn--primary.float--right.tooltip
+                {:data-tooltip "Add to order"
+                 :on-click #(add-to-order id)}
+                [:i.icon.icon--plus]])
+             title]
             [:p.gig__price (format-price price)]
             [:p.gig__desc desc]]])]])))
