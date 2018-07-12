@@ -127,3 +127,10 @@ disassoc
 (greet-1 "peter" "wen")
 (greet-2 "peter" "wen")
 (greet-3 "peterrrr" "wen")
+
+;;let binding
+
+;Lecture 13
+; component level state
+
+;Wrap mark-up do not include component level state in the render function

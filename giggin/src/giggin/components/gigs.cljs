@@ -13,17 +13,7 @@
                           [:div.gig__body
                            [:div.gig__title
                             [:div.btn.btn--primary.float--right.tooltip {:data-tooltip "Add to order"
-                             :on-click (add-to-order id)}
+                             :on-click #(add-to-order id)}
                              [:i.icon.icon--plus]] title]
                               [:p.gig__price (format-price price)]
-                              [:p.gig_desc desc]]])
-
-     (map (fn [gig]
-                       [:div.gig {:key (:id gig)}
-                         [:img.gig__artwork {:src (get gig :img) :alt (:title gig)}]
-                         [:div.gig__body
-                          [:div.gig__title
-                           [:div.btn.btn--primary.float--right.tooltip {:data-tooltip "Add to order"}
-                            [:i.icon.icon--plus]] (:title gig)]
-                             [:p.gig__price (format-price (:price gig))]
-                             [:p.gig_desc (:desc gig)]]]) (vals @state/gigs))]]))
+                              [:p.gig_desc desc]]])]]))
